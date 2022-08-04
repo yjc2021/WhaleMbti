@@ -1,15 +1,11 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 
 const HomeBtn = (props) => {
   return (
-    <div className="d-flex justify-content-center">
-      <Button
-        style={{ borderRadius: "2rem", height: "3.5rem" }}
-        className="mt-5"
-      >
+    <div className=" z-10 mt-5 mb-4 w-full h-32 flex items-center justify-center">
+      <button className="rounded-full w-60 h-14 bg-gray-300 text-black text-xl ">
         아기 고래 만나러 가기
-      </Button>
+      </button>
     </div>
   );
 };
