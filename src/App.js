@@ -1,10 +1,9 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./routes/Router";
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-gray-300 h-screen ">
       <BrowserRouter>
         <Router />
       </BrowserRouter>
