@@ -1,25 +1,12 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
+import WhaleAni from "../animations/whale_ani";
 
 const ImgCard = (props) => {
   return (
-    <Card
-      style={{ width: "100%", height: "50vh" }}
-      className="bg-dark text-white"
-    >
-      <Card.Img src="" alt="Card Image" />
-
-      <Card.ImgOverlay
-        style={{
-          fontSize: "2rem",
-          display: "flex",
-          flexDirection: "column-reverse",
-          alignItems: "center",
-        }}
-      >
-        <Card.Text>나는 어떤 고래일까?</Card.Text>
-      </Card.ImgOverlay>
-    </Card>
+    <div className=" z-10 w-full flex flex-col items-center my-2 border text-white">
+      <WhaleAni />
+      <div className="text-3xl ">나는 어떤 고래일까?</div>
+    </div>
   );
 };
 
