@@ -1,15 +1,22 @@
 import React from "react";
-import Header from "../components/header";
-import HomeBtn from "../components/home/homeBtn";
-import HomeIntro from "../components/home/homeIntro";
+import Header from "../components/home/header";
 import ImgCard from "../components/home/imgCard";
-const Home = () => {
+import HomeIntro from "../components/home/homeIntro";
+import HomeBtn from "../components/home/homeBtn";
+import Share from "../components/home/share";
+import Stat from "../components/home/stat";
+import Bubbles from "../components/animations/bubbles";
+
+const Home = (props) => {
   return (
-    <div style={{ height: "100vh", backgroundColor: "grey", color: "white" }}>
+    <div className="relative h-screen flex flex-col items-center overflow-y-auto bg-blue-950 pb-5 text-white ">
       <Header />
       <ImgCard />
       <HomeIntro />
       <HomeBtn />
+      <Stat />
+      <Bubbles />
+      <Share />
     </div>
   );
 };
