@@ -114,7 +114,7 @@ const Header = (props) => {
         {!isOpen && (
           <button
             onClick={toggleSideBar}
-            className="absolute right-0 lg:hidden rounded-full w-10 h-10 bg-blue-200"
+            className="absolute right-5 lg:hidden rounded-full w-10 h-10 bg-blue-200"
           >
             <FontAwesomeIcon className="text-white" icon={solid("user")} />
           </button>
