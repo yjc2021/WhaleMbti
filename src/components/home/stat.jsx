@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 const Stat = (props) => {
   return (
-    <StatWrapper>
+    <StatWrapper className="flex flex-col lg:hidden">
       <SpanWrapper>참여자 수</SpanWrapper>
       <NumWrapper>1,234,567</NumWrapper>
     </StatWrapper>
@@ -12,8 +12,6 @@ const Stat = (props) => {
 export default Stat;
 
 const StatWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   margin: 3rem 0;
 `;
 const NumWrapper = styled.span`
