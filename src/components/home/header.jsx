@@ -4,6 +4,8 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import "./header.css";
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
+import Share from "./share";
+import Logo from "../logo";
 const Header = (props) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +44,7 @@ const Header = (props) => {
         <SideBarWrapper
           isOpen={isOpen}
           ref={sideBarRef}
-          className="flex flex-col fixed top-0 bottom-0 right-0 right-[-250px] px-2 w-[250px]  overflow-y-auto  bg-white transition-all linear py-4"
+          className="rounded-md flex flex-col fixed top-0 bottom-0 right-0 right-[-250px] px-2 w-[250px]  overflow-y-auto  bg-white transition-all linear py-4"
         >
           <header className="flex flex-col items-center justify-center">
             {/*
@@ -53,13 +55,14 @@ const Header = (props) => {
               닫기
             </button>
             */}
+            <Logo sideBar={true} />
             <div
-              className="w-40 h-40 rounded-full bg-gray-400 text-white flex justify-center items-center"
+              className="w-16 h-16 mt-16 rounded-full bg-gray-400 text-white flex justify-center items-center"
               onClick={() => navigate("/login")}
             >
               <FontAwesomeIcon icon={solid("user")} className="w-1/2 h-1/2" />
             </div>
-            <div className="border-bottom text-sm text-center">
+            <div className="border-b-2 border-b-gray-300 text-sm text-center text-gray-400">
               로그인이 필요합니다
             </div>
           </header>
@@ -87,18 +90,9 @@ const Header = (props) => {
               onClick={() => navigate("/")}
             ></button>
           </div>
-          <div className="flex flex-col items-center">
-            <span className="block">공유하기</span>
-            <div className="p-2 border w-full flex justify-between">
-              <button className="rounded-full w-9 h-9 bg-blue-200"></button>
-              <button className="rounded-full w-9 h-9 bg-blue-200"></button>
-              <button className="rounded-full w-9 h-9 bg-blue-200"></button>
-              <button className="rounded-full w-9 h-9 bg-blue-200"></button>
-              <button className="rounded-full w-9 h-9 bg-blue-200"></button>
-            </div>
-          </div>
+          <Share color={"gray"} />
         </SideBarWrapper>
-
+        {/*
         <div className="hidden lg:flex justify-center w-1/2 ">
           <span className="mx-2 cursor-pointer" onClick={() => navigate("/")}>
             테스트 기록 보기
@@ -111,6 +105,7 @@ const Header = (props) => {
           </span>
         </div>
         <span className="hidden lg:block">1,234,567</span>
+          */}
         {!isOpen && (
           <button
             onClick={toggleSideBar}
@@ -119,11 +114,15 @@ const Header = (props) => {
             <FontAwesomeIcon className="text-white" icon={solid("user")} />
           </button>
         )}
-        <div className="hidden lg:flex flex-col items-center">
-          <button className="rounded-full w-10 h-10 bg-blue-200">
+        <div
+          className="hidden lg:flex flex-col items-center cursor-pointer"
+          onClick={toggleSideBar}
+        >
+          <FontAwesomeIcon icon={solid("bars")} className="text-2xl" />
+          {/*<button className="rounded-full w-10 h-10 bg-blue-200">
             <FontAwesomeIcon className="text-white" icon={solid("user")} />
           </button>
-          <span className="inline-block text-xs">로그인</span>
+        <span className="inline-block text-xs">로그인</span> */}
         </div>
       </nav>
     </header>
