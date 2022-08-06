@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Share = (props) => {
+const Share = ({ color }) => {
   return (
-    <ShareWrapper>
+    <ShareWrapper className="lg:pb-0">
       <div>테스트 공유하기</div>
       <BtnContainer>
-        <ButtonWrapper></ButtonWrapper>
-        <ButtonWrapper></ButtonWrapper>
-        <ButtonWrapper></ButtonWrapper>
-        <ButtonWrapper></ButtonWrapper>
-        <ButtonWrapper></ButtonWrapper>
+        <ButtonWrapper color={color}></ButtonWrapper>
+        <ButtonWrapper color={color}></ButtonWrapper>
+        <ButtonWrapper color={color}></ButtonWrapper>
+        <ButtonWrapper color={color}></ButtonWrapper>
+        <ButtonWrapper color={color}></ButtonWrapper>
       </BtnContainer>
     </ShareWrapper>
   );
@@ -22,13 +22,12 @@ const ShareWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 4rem;
 `;
 const ButtonWrapper = styled.button`
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background-color: whitesmoke;
+  background-color: ${(props) => props.color || "whitesmoke"};
   border: none;
   margin: 0 0.2rem;
   cursor: pointer;
