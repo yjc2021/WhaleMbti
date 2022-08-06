@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import a1 from "../../animations/whale.gif";
-import a2 from "../../animations/bubbles.gif";
 import a3 from "../../animations/giphy.gif";
+
 const useInterval = (callback, delay) => {
   const savedCallback = useRef();
   useEffect(() => {
@@ -161,10 +159,11 @@ const WhaleSlider = (props) => {
 export default WhaleSlider;
 
 const ItemWrapper = styled.div`
-  transition: transform 500ms ease 0s;
+  transition: transform 500ms ease 0s, opacity 500ms ease-in-out;
   ${(props) =>
     !props.isCenter &&
     css`
       transform: scale(0.8);
+      opacity: 0.4;
     `}
 `;
