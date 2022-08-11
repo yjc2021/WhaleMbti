@@ -20,7 +20,7 @@ const useInterval = (callback, delay) => {
 };
 const WhaleSlider = (props) => {
   //const items = ["#33a", "#8c9", "#f3e074"];
-  const items = [a3, a1, a1, a1, a3];
+  const items = [a1, a3, a1, a3, a1];
   const itemSize = items.length;
   const transitionTime = 500;
   const transitionStyle = `transform ${transitionTime}ms ease 0s`;
@@ -137,6 +137,15 @@ const WhaleSlider = (props) => {
                       alt="loading"
                       className="w-full h-full object-cover  select-none"
                     />
+
+                    {/*<video
+                      src={items[itemIndex]}
+                      autoPlay={true}
+                      muted={true}
+                      loop={true}
+                      controls={false}
+                      className="w-full h-full object-cover  select-none"
+                  ></video> */}
                     {/*
                     <div
                       className="flex flex-col items-center w-full h-full text-white justify-center "
