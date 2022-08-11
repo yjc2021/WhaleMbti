@@ -1,5 +1,4 @@
 import React from "react";
-import WhaleAni from "../animations/whale_ani";
 import WhaleSlider from "./slider";
 
 const ImgCard = (props) => {
