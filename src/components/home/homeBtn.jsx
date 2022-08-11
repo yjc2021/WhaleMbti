@@ -7,7 +7,7 @@ const HomeBtn = (props) => {
   const navigate = useNavigate();
   const handleClick = () => {
     setSwim(true);
-    setTimeout(() => navigate("/test"), 4000);
+    setTimeout(() => navigate("/test/home"), 4000);
   };
 
   return (
