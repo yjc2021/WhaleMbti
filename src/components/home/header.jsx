@@ -33,7 +33,7 @@ const Header = (props) => {
   }, [isOpen]);
 
   return (
-    <header className="sticky z-50 top-0 w-full h-16 bg-blue-950 m-0 px-10 py-2">
+    <header className="sticky z-50 top-0 w-full h-16  m-0 px-10 py-2">
       <nav className="flex items-center justify-center lg:justify-between">
         <div
           onClick={() => navigate("/")}
