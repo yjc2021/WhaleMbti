@@ -3,11 +3,19 @@ import Header from "../components/home/header";
 import StoryBtn from "../components/story/storyBtn";
 import StoryBlock from "../components/story/storyBlock";
 import StoryHeader from "../components/story/storyHeader";
+import ProgressBar from "../components/story/progressBar";
 import { storyData, decisionAData, decisionBData } from "../data";
 import { useParams } from "react-router-dom";
+import { useRef } from "react";
 const LAST_PAGE = 12;
 
 const TestStory = () => {
+  const cntD = useRef([
+    { id: 0, data: { 0: "z", 1: "z", 2: "z" } },
+    { id: 1, data: { 0: "z", 1: "z", 2: "z" } },
+    { id: 2, data: { 0: "z", 1: "z", 2: "z" } },
+    { id: 3, data: { 0: "z", 1: "z", 2: "z" } },
+  ]);
   const { storyId } = useParams();
   const story = storyData[storyId - 1];
   const decisionA = decisionAData[storyId - 1];
@@ -23,15 +31,26 @@ const TestStory = () => {
         <StoryBlock story={story} />
         {parseInt(storyId) !== LAST_PAGE ? (
           <div className="border-2 border-gray-700 h-36 my-8 flex flex-col justify-between">
-            <StoryBtn id={storyId} decision={decisionA} />
-            <StoryBtn id={storyId} decision={decisionB} />
+            <StoryBtn
+              id={parseInt(storyId)}
+              type="a"
+              decision={decisionA}
+              cntD={cntD}
+            />
+            <StoryBtn
+              id={parseInt(storyId)}
+              type="b"
+              decision={decisionB}
+              cntD={cntD}
+            />
           </div>
         ) : (
           <div className="border-2 border-gray-700 h-36 my-8 flex items-end">
-            <StoryBtn id={storyId} />
+            <StoryBtn id={parseInt(storyId)} cntD={cntD} />
           </div>
         )}
       </div>
+      <ProgressBar id={parseInt(storyId)} />
     </>
   );
 };
