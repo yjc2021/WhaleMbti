@@ -1,7 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import a1 from "../../animations/whale.gif";
-import a3 from "../../animations/giphy.gif";
+import a1 from "../../animations/고양이고래(ENTJ).png";
+import a2 from "../../animations/귀신고래(ISTP).png";
+import a3 from "../../animations/남방참고래(ESFJ).png";
+import a4 from "../../animations/남방큰돌고래(ENFJ).png";
+import a5 from "../../animations/낫돌고래(ESTP).png";
+import a6 from "../../animations/대왕고래(INFJ).png";
+import a7 from "../../animations/민부리고래(ISTJ).png";
+import a8 from "../../animations/밍크고래(ISFJ).png";
+import a9 from "../../animations/범고래(ESTJ).png";
+import a10 from "../../animations/벨루가(ENFP).png";
+import a11 from "../../animations/병코돌고래(ENTP).png";
+import a12 from "../../animations/북극고래(INFP).png";
+import a13 from "../../animations/상괭이(INTP).png";
+import a14 from "../../animations/일각고래(INTJ).png";
+import a15 from "../../animations/향유고래(ISFP).png";
+import a16 from "../../animations/혹등고래(ESFP).png";
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef();
@@ -20,7 +34,24 @@ const useInterval = (callback, delay) => {
 };
 const WhaleSlider = (props) => {
   //const items = ["#33a", "#8c9", "#f3e074"];
-  const items = [a1, a3, a1, a3, a1];
+  const items = [
+    a1,
+    a2,
+    a3,
+    a4,
+    a5,
+    a6,
+    a7,
+    a8,
+    a9,
+    a10,
+    a11,
+    a12,
+    a13,
+    a14,
+    a15,
+    a16,
+  ];
   const itemSize = items.length;
   const transitionTime = 500;
   const transitionStyle = `transform ${transitionTime}ms ease 0s`;
@@ -126,7 +157,7 @@ const WhaleSlider = (props) => {
                   <ItemWrapper
                     key={slideIndex}
                     isCenter={cIndex === itemIndex}
-                    className="slider-item relative bg-blue-300 border-2 border-blue-200 rounded-xl w-[270px] h-[180px] py-0 px-[12px] float:left inline-block"
+                    className="slider-item relative w-[270px] h-[180px] py-0 px-[12px] float:left inline-block"
                   >
                     {/*<span>
                       {slideIndex}({itemIndex}) [
@@ -172,7 +203,7 @@ const ItemWrapper = styled.div`
   ${(props) =>
     !props.isCenter &&
     css`
-      transform: scale(0.8);
-      opacity: 0.4;
+      transform: scale(0.6);
+      opacity: 0.6;
     `}
 `;
