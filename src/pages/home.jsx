@@ -11,7 +11,7 @@ import newHome from "../animations/newHome.jpg";
 
 const Home = (props) => {
   return (
-    <Wrapper className="relative h-screen flex flex-col items-center overflow-y-auto bg-blue-950 pb-5 lg:pb-0 text-white bg-no-repeat bg-center bg-cover">
+    <Wrapper className="relative w-screen h-screen flex flex-col items-center overflow-y-auto bg-blue-950 pb-5 lg:pb-0 text-white ">
       <Header />
       <ImgCard />
       <HomeIntro />
@@ -27,4 +27,8 @@ export default Home;
 
 const Wrapper = styled.div`
   background-image: url(${newHome});
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
 `;

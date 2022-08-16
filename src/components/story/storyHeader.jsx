@@ -12,7 +12,7 @@ const StoryHeader = ({ id }) => {
     }
   };
   return (
-    <div className="flex items-center justify-between text-md px-6 py-3 border-2 border-gray-500">
+    <div className="flex lg:hidden items-center justify-between text-md px-6 py-3 border-2 border-gray-500">
       <div className="flex items-center gap-1">
         <FontAwesomeIcon className="" icon={solid("chevron-left")} />
         <div className="cursor-pointer" onClick={goBack}>
