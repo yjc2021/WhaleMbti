@@ -6,8 +6,9 @@ const HomeBtn = (props) => {
   const [swim, setSwim] = useRecoilState(swimAtom);
   const navigate = useNavigate();
   const handleClick = () => {
-    setSwim(true);
-    setTimeout(() => navigate("/test/home"), 4000);
+    //setSwim(true);
+    //setTimeout(() => navigate("/test/home"), 4000);
+    navigate("test/home");
   };
 
   return (
