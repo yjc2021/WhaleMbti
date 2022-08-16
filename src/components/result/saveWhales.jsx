@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SaveWhales = (props) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="w-full h-48 border"></div>
@@ -17,11 +19,17 @@ const SaveWhales = (props) => {
         <div className="my-5 w-full text-center font-bold text-xl">
           더 많은 고래 가족을 구하러 가요!
         </div>
-        <button onClick className="text-xl bg-gray-200 rounded-full w-3/4 h-24">
-          <span className="text-center w-full">고래를 위한 </span>
-          <br></br>
-          <span className="text-center w-full">서명하러 가기</span>
-        </button>
+        <a
+          href="https://cloud.greensk.greenpeace.org/petitions-ocean-sanctuaries2?_ga=2.163973751.934786916.1660375344-1322382692.1658895074"
+          rel=" noopener noreferrer"
+          target="_blank"
+        >
+          <button className="text-xl bg-gray-200 rounded-full w-56 h-24">
+            <span className="text-center w-full">고래를 위한 </span>
+            <br></br>
+            <span className="text-center w-full">서명하러 가기</span>
+          </button>
+        </a>
       </div>
     </div>
   );
