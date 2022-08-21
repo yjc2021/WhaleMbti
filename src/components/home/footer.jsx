@@ -4,7 +4,7 @@ import Share from "./share";
 const Footer = (props) => {
   return (
     <>
-      <footer className=" lg:flex flex-col items-center justify-evenly w-full py-3 ">
+      <footer className="z-50 lg:flex flex-col items-center justify-evenly w-full py-3 ">
         <FooterLogo />
         <Share />
       </footer>

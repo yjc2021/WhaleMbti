@@ -44,7 +44,7 @@ const Header = (props) => {
         <SideBarWrapper
           isOpen={isOpen}
           ref={sideBarRef}
-          className="rounded-md flex flex-col fixed top-0 bottom-0 right-0 right-[-250px] px-2 w-[250px]  overflow-y-auto  bg-white transition-all linear py-4"
+          className="z-50 rounded-md flex flex-col fixed top-0 bottom-0 right-0 right-[-250px] px-2 w-[250px]  overflow-y-auto  bg-white transition-all linear py-4"
         >
           <header className="flex flex-col items-center justify-center">
             {/*
