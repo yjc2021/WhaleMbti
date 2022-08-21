@@ -15,8 +15,9 @@ import useAsync from "../useAsync";
 import axios from "axios";
 
 const postMbti = async (mbtiD) => {
+  console.log(mbtiD);
   const response = await axios.post(
-    "http://localhost:8080/api/algorithm/result",
+    "/api/algorithm/result",
     {
       icount: mbtiD.current.iCnt,
       ecount: mbtiD.current.eCnt,
@@ -55,7 +56,7 @@ const postMbti = async (mbtiD) => {
     })
     */
   );
-  console.log(mbtiD.current);
+  //console.log(mbtiD.current);
   return response.data;
   // 고래 정보(whaleId,whaleName,whaleShare) mbti cnt post 요청 return으로 가져와서
   // 고래의 궁합 조회
@@ -81,9 +82,11 @@ const TestResult = (props) => {
   const { loading, data: whale, error } = state;
 
   if (loading) return <div>로딩중...</div>;
-  //if (error) return <div>에러가 발생했습니다</div>;
+  if (error) console.log(error);
 
-  if (!whale)
+  if (whale) {
+    const { whaleId, whaleName, whaleShare } = whale[0];
+    //console.log(whaleId);
     return (
       <div className="w-full h-screen overflow-y-auto">
         <Header />
@@ -91,17 +94,18 @@ const TestResult = (props) => {
           <div className="text-xl text-center font-bold">고래 테스트</div>
         </div>
         <div className="w-full px-4 flex flex-col items-center">
-          <WhaleName />
-          <WhaleImg />
-          <WhaleDescription />
+          <WhaleName id={whaleId} name={whaleName} />
+          <WhaleImg id={whaleId} />
+          <WhaleDescription id={whaleId} />
           <SaveWhales />
           <ResultShare />
-          <WhaleStats />
+          <WhaleStats whale={whale} />
           <RetryBtn />
         </div>
         <ResultFooter />
       </div>
     );
+  }
 };
 
 export default TestResult;
