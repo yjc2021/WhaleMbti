@@ -12,12 +12,12 @@ const HomeBtn = (props) => {
   };
 
   return (
-    <div className=" z-10 mt-5 mb-4 w-full h-32 flex items-center justify-center">
+    <div className=" z-40 mt-5 mb-4 w-full h-32 flex items-center justify-center">
       <button
         onClick={handleClick}
-        className="rounded-full w-60 h-14 bg-gray-300 text-black text-xl "
+        //className="rounded-full w-60 h-14 bg-gray-300 text-black text-xl "
       >
-        아기 고래 만나러 가기
+        <img src="/homeBtn.png" alt="button" className="w-80 h-auto" />
       </button>
     </div>
   );
