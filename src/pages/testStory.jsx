@@ -7,7 +7,7 @@ import ProgressBar from "../components/story/progressBar";
 import { storyData, decisionAData, decisionBData } from "../data";
 import { useParams } from "react-router-dom";
 import { useRef } from "react";
-const LAST_PAGE = 12;
+const LAST_PAGE = 13;
 
 const TestStory = () => {
   const cntD = useRef([

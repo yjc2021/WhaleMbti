@@ -20,7 +20,7 @@ const StoryHeader = ({ id }) => {
         </div>
       </div>
       <div className="text-xl text-center font-bold">고래 테스트</div>
-      <div>{id}/12</div>
+      {parseInt(id) !== 13 ? <div>{id}/12</div> : <div></div>}
     </div>
   );
 };
