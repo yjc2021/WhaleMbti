@@ -10,14 +10,15 @@ import Header from "../components/home/header";
 import Share from "../components/home/share";
 import ResultFooter from "../components/result/resultFooter";
 import ResultShare from "../components/result/resultShare";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAsync from "../useAsync";
 import axios from "axios";
+import DownloadBtn from "../components/result/downloadBtn";
 
 const postMbti = async (mbtiD) => {
   console.log(mbtiD);
   const response = await axios.post(
-    "/api/algorithm/result",
+    "http://localhost:8080/api/algorithm/result",
     {
       icount: mbtiD.current.iCnt,
       ecount: mbtiD.current.eCnt,
@@ -28,65 +29,53 @@ const postMbti = async (mbtiD) => {
       pcount: mbtiD.current.pCnt,
       jcount: mbtiD.current.jCnt,
     }
-    /* 
-    .then(res => {
-      const whaleD = res.data;
-      axios.post("http://localhost:8080/api/create/result", {
-        createMemberDto: {
-          id: 17,
-          name: "윤광오",
-          email: "swager253@naver.com",
-          address: {
-            city: "인천시",
-            street: "문화로",
-            zipcode: "계원1동",
-          },
-          account: "qkfks1234",
-          pwd: "1234",
-          memberStatus: "USER",
-          createDateTime: "2022-08-07 22:04",
-          updateDateTime: "2022-08-07 22:04",
-        },
-        createWhaleCountDto: {
-          whaleId: whaleD.whaleId,
-          whaleName: whaleD.whaleName,
-          whaleShare: whaleD.whaleShare,
-        },
-      });
-    })
-    */
   );
   //console.log(mbtiD.current);
+  console.log(response);
   return response.data;
   // 고래 정보(whaleId,whaleName,whaleShare) mbti cnt post 요청 return으로 가져와서
   // 고래의 궁합 조회
 };
-const resetMbtiD = (mbtiD) => {
-  mbtiD.current = {
-    eCnt: 0,
-    iCnt: 0,
-    nCnt: 0,
-    sCnt: 0,
-    tCnt: 0,
-    fCnt: 0,
-    pCnt: 0,
-    jCnt: 0,
-  };
+const postMbti2 = async (mbtiD) => {
+  console.log(mbtiD.current);
+  await axios
+    .post("http://localhost:8080/api/algorithm/result", {
+      icount: mbtiD.current.iCnt,
+      ecount: mbtiD.current.eCnt,
+      scount: mbtiD.current.sCnt,
+      ncount: mbtiD.current.nCnt,
+      tcount: mbtiD.current.tCnt,
+      fcount: mbtiD.current.fCnt,
+      pcount: mbtiD.current.pCnt,
+      jcount: mbtiD.current.jCnt,
+    })
+    .then((res) => console.log(res))
+    .catch((e) => console.log(e));
+  //console.log(mbtiD.current);
+  // 고래 정보(whaleId,whaleName,whaleShare) mbti cnt post 요청 return으로 가져와서
+  // 고래의 궁합 조회
 };
 const TestResult = (props) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const mbtiD = location.state;
+  //const [mbtiState, setMbtiState] = useRecoilState(mbtiAtom);
+  console.log("testresult");
+  console.log(mbtiD);
 
   const [state, refetch] = useAsync(() => postMbti(mbtiD), []);
 
   const { loading, data: whale, error } = state;
-
+  console.log(whale);
   if (loading) return <div>로딩중...</div>;
-  if (error) console.log(error);
-
+  if (error) {
+    alert("예상치 못한 에러가 발생했습니다");
+    navigate("/");
+  }
   if (whale) {
+    console.log(whale);
     const { whaleId, whaleName, whaleShare } = whale[0];
-    //console.log(whaleId);
+    console.log(whaleId);
     return (
       <div className="w-full h-screen overflow-y-auto">
         <Header />
@@ -96,6 +85,7 @@ const TestResult = (props) => {
         <div className="w-full px-4 flex flex-col items-center">
           <WhaleName id={whaleId} name={whaleName} />
           <WhaleImg id={whaleId} />
+          <DownloadBtn id={whaleId} />
           <WhaleDescription id={whaleId} />
           <SaveWhales />
           <ResultShare />
