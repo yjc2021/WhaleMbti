@@ -5,7 +5,7 @@ const ProgressBar = ({ id }) => {
   return (
     <>
       <div className="hidden lg:flex w-full h-[20px]  items-center rounded-full bg-[white] fixed bottom-3">
-        <HighLight width={(id / 13) * 100 + "%"}></HighLight>
+        <HighLight width={(id / 19) * 100 + "%"}></HighLight>
         <Dot />
       </div>
     </>
