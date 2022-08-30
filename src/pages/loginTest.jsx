@@ -1,6 +1,7 @@
 import { data } from "autoprefixer";
 import axios from "axios";
 import React from "react";
+import DownloadBtn from "../components/result/downloadBtn";
 import useAsync from "../useAsync";
 const signUp = async () => {
   const response = await axios.post("http://localhost:8080/api/v3/join", {
@@ -20,12 +21,12 @@ const postMbti = async () => {
   const response = await axios.post(
     "http://localhost:8080/api/algorithm/result",
     {
-      icount: 3,
-      ecount: 0,
+      icount: 0,
+      ecount: 3,
       scount: 3,
       ncount: 0,
-      tcount: 3,
-      fcount: 0,
+      tcount: 0,
+      fcount: 3,
       pcount: 3,
       jcount: 0,
     }
@@ -33,9 +34,9 @@ const postMbti = async () => {
   return response.data;
 };
 const logIn = async () => {
-  const response = await axios.post("http://localhost:8080/api/v3/login", {
-    account: "hayoon97",
-    password: "970207",
+  const response = await axios.post("http://localhost:8080/api/v4/login", {
+    account: "doraemong123",
+    password: "1234321",
   });
   console.log(response);
   return response.data;
@@ -172,12 +173,13 @@ const saveResultNonUser = async () => {
   return response.data;
 };
 const LoginTest = (props) => {
-  const [state, refetch] = useAsync(saveResultNonUser, []);
+  const [state, refetch] = useAsync(postMbti, []);
   const { loading, data, error } = state;
 
   if (loading) return <div>로딩중...</div>;
   if (error) console.log(error);
   if (data) console.log(data);
+  return <DownloadBtn id={8} />;
 };
 
 export default LoginTest;
