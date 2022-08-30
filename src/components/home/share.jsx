@@ -1,16 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import FacebookShare from "../buttons/facebookShare";
+import KakaoShare from "../buttons/kakaoShare";
+import TwitterShare from "../buttons/twitterShare";
+import UrlShare from "../buttons/urlShare";
 
 const Share = ({ color }) => {
   return (
     <ShareWrapper className="lg:pb-0">
       <div>테스트 공유하기</div>
       <BtnContainer>
-        <ButtonWrapper color={color}></ButtonWrapper>
-        <ButtonWrapper color={color}></ButtonWrapper>
-        <ButtonWrapper color={color}></ButtonWrapper>
-        <ButtonWrapper color={color}></ButtonWrapper>
-        <ButtonWrapper color={color}></ButtonWrapper>
+        <KakaoShare />
+        <FacebookShare />
+        <TwitterShare />
+        <UrlShare />
       </BtnContainer>
     </ShareWrapper>
   );
