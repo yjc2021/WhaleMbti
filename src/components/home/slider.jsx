@@ -143,7 +143,7 @@ const WhaleSlider = (props) => {
   */}
           <div className="slider-list relative overflow-hidden block m-0">
             <div
-              className="slider-track relative gap-1 left-[50%] t-0 flex text-left w-fit h-[300px] flex items-center"
+              className="slider-track relative left-[50%] t-0 flex text-left w-fit h-[300px] flex items-center"
               style={{
                 transition: slideTransition,
                 transform: `translateX(${
@@ -157,7 +157,7 @@ const WhaleSlider = (props) => {
                   <ItemWrapper
                     key={slideIndex}
                     isCenter={cIndex === itemIndex}
-                    className="slider-item relative w-[270px] h-[180px] py-0 px-[12px] float:left inline-block"
+                    className="slider-item relative w-[320px] h-auto py-0 px-[12px] float:left inline-block"
                   >
                     {/*<span>
                       {slideIndex}({itemIndex}) [
@@ -166,7 +166,7 @@ const WhaleSlider = (props) => {
                     <img
                       src={items[itemIndex]}
                       alt="loading"
-                      className="w-full h-full object-cover  select-none"
+                      className="w-full h-full object-cover select-none"
                     />
 
                     {/*<video
@@ -199,11 +199,11 @@ const WhaleSlider = (props) => {
 export default WhaleSlider;
 
 const ItemWrapper = styled.div`
-  transition: transform 500ms ease 0s, opacity 500ms ease-in-out;
+  transition: transform 400ms ease 0s, opacity 500ms ease-in-out;
   ${(props) =>
     !props.isCenter &&
     css`
-      transform: scale(0.6);
+      transform: scale(0.5);
       opacity: 0.6;
     `}
 `;
