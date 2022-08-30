@@ -6,10 +6,12 @@ import HomeBtn from "../components/home/homeBtn";
 import Stat from "../components/home/stat";
 import Footer from "../components/home/footer";
 import styled from "styled-components";
+import mainLg from "../img/home/mainLg.jpg";
+import mainSm from "../img/home/mainSm.jpg";
 
 const Home = (props) => {
   return (
-    <Wrapper className="overflow-x-hidden relative w-[375px] h-auto lg:w-full lg:h-screen flex flex-col items-center overflow-y-auto bg-blue-950 pb-5 lg:pb-0 text-white bg-contain bg-local lg:bg-cover lg:bg-scroll">
+    <Wrapper className="overflow-x-hidden relative w-[375px] h-auto lg:w-full lg:h-screen flex flex-col items-center overflow-y-auto bg-blue-950 pb-5 lg:pb-0 text-white bg-contain bg-local lg:bg-cover lg:bg-local">
       <img
         src="/bg-3.png"
         alt="bg-3"
@@ -25,11 +27,13 @@ const Home = (props) => {
         alt="bg-3"
         className="absolute -bottom-[100px] h-full w-auto z-10"
       />
+      {/*
       <img
         src="/bg-1.gif"
         alt="bg-1"
         className="absolute -bottom-[100px] -left-10 w-auto h-[200px] lg:h-1/3 lg:w-auto"
       />
+  
       <img
         src="/bg-4.gif"
         alt="bg-4"
@@ -46,6 +50,7 @@ const Home = (props) => {
         alt="bg-8"
         className="z-10 absolute bottom-0 h-full w-auto lg:h-1/3 lg:w-auto"
       />
+  */}
       <Header />
       <ImgCard />
       <HomeIntro />
@@ -65,10 +70,10 @@ export default Home;
 */
 
 const Wrapper = styled.div`
-  background-image: url("/mainSm.jpg");
+  background-image: url(${mainSm});
 
   @media screen and (min-width: 640px) {
-    background-image: url("/newHome.jpg");
+    background-image: url(${mainLg});
   }
   background-repeat: no-repeat;
 `;
