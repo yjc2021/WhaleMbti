@@ -2,12 +2,16 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { counterAtom } from "../../atoms";
 const StoryHeader = ({ id }) => {
+  const setCounter = useSetRecoilState(counterAtom);
   const navigate = useNavigate();
   const goBack = () => {
     if (id <= 1) {
       alert("테스트 첫 페이지입니다");
     } else {
+      setCounter((cur) => cur - 1);
       navigate(`/test/story/${id - 1}`);
     }
   };
@@ -20,7 +24,7 @@ const StoryHeader = ({ id }) => {
         </div>
       </div>
       <div className="text-xl text-center font-bold">고래 테스트</div>
-      {parseInt(id) !== 13 ? <div>{id}/12</div> : <div></div>}
+      {parseInt(id) !== 13 ? <div>{id}/19</div> : <div></div>}
     </div>
   );
 };
