@@ -1,4 +1,4 @@
-# 🐳CORAL WEB🐳
+# 🐳CORAL_WEB🐳
 ![image](https://user-images.githubusercontent.com/88219703/194698566-f72ebaf2-ee25-4c58-ae59-ba304d7138b0.png)
 
 #### 나는 어떤 고래일까?
@@ -18,4 +18,16 @@
 
 ### 🐋 서비스 핵심 기능
 - main
+1. SNB
+2. 슬라이더
+
+- MBTI 테스트
+1. 
+- 테스트 결과 확인
+
+- 회원가입 
+
+- 로그인
+
+- 테스트 기록 보기
 
