@@ -3,6 +3,7 @@ import React from "react";
 import { whaleIndex } from "../../data";
 import { useRecoilState } from "recoil";
 import { loginAtom } from "../../atoms";
+import styled from "styled-components";
 const DownloadBtn = ({ id }) => {
   const [isLogin, setIsLogin] = useRecoilState(loginAtom);
   const downloadFile = () => {
@@ -11,7 +12,7 @@ const DownloadBtn = ({ id }) => {
       return;
     }
     axios({
-      url: whaleIndex[id - 1].whaleImg,
+      url: whaleIndex[id - 1].resultImg,
       method: "GET",
       responseType: "blob",
     }).then((res) => {
@@ -23,14 +24,17 @@ const DownloadBtn = ({ id }) => {
       link.click();
     });
   };
-  return (
-    <button
-      className="rounded-md bg-blue-500 p-[1rem] w-[6rem] h-[5rem] text-white"
-      onClick={downloadFile}
-    >
-      이미지 다운로드
-    </button>
-  );
+  return <ButtonWrapper onClick={downloadFile}>이미지 다운로드</ButtonWrapper>;
 };
 
 export default DownloadBtn;
+
+const ButtonWrapper = styled.button`
+  background-color: #ffe27e;
+  color: #002fac;
+  height: 2.5rem;
+  border-radius: 3rem;
+  padding: 5px;
+  width: 9rem;
+  font-size: 1rem;
+`;

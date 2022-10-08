@@ -5,10 +5,10 @@ import KakaoShare from "../buttons/kakaoShare";
 import TwitterShare from "../buttons/twitterShare";
 import UrlShare from "../buttons/urlShare";
 
-const Share = ({ color }) => {
+const Share = () => {
   return (
-    <ShareWrapper className="lg:pb-0">
-      <div>테스트 공유하기</div>
+    <ShareWrapper className="flex flex-col items-center lg:pb-0">
+      <div className="text-[1rem]">테스트 공유하기</div>
       <BtnContainer>
         <KakaoShare />
         <FacebookShare />
@@ -21,11 +21,7 @@ const Share = ({ color }) => {
 
 export default Share;
 
-const ShareWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+const ShareWrapper = styled.div``;
 const ButtonWrapper = styled.button`
   width: 2rem;
   height: 2rem;
@@ -43,5 +39,4 @@ const BtnContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
 `;

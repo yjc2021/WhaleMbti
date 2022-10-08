@@ -1,14 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
-const FooterLogo = (props) => {
-  const navigate = useNavigate();
+import footerLogo from "../img/logo/footerLogo.png";
+const FooterLogo = () => {
   return (
-    <div
-      onClick={() => navigate("/")}
-      className="h-10 w-40 border cursor-pointer hidden lg:block mb-2"
-    >
-      LOGO
+    <div className="flex items-center justify-center md:justify-end h-full">
+      <img src={footerLogo} alt="footerLogo" className="h-[60px] w-auto" />
     </div>
   );
 };

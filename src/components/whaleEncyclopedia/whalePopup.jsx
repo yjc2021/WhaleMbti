@@ -2,12 +2,10 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled, { css, keyframes } from "styled-components";
 import { popUpAtom } from "../../atoms";
-import { whaleIndex } from "../../data";
-
+import { whaleDescription, whaleIndex } from "../../data";
 const WhalePopup = () => {
   const [popUp, setPopup] = useRecoilState(popUpAtom);
   const onDelClick = () => {
-    // recoil state 변경 하여 popup 사라지도록
     setPopup((cur) => ({ ...cur, isPopUpOpen: false }));
   };
   return (
@@ -18,18 +16,22 @@ const WhalePopup = () => {
       ></PopUpBackground>
       <PopUpWrapper
         visible={popUp.isPopUpOpen}
-        className="overflow-y-auto transition-all ease-in duration-200 w-[300px] h-[450px] md:w-[500px] md:h-[500px]"
+        className="overflow-y-auto transition-all ease-in duration-200 w-[300px] h-[450px] md:w-[700px] md:h-[700px]"
       >
-        <DelBtnWrapper>
-          <DelBtn onClick={onDelClick}>❌</DelBtn>
-        </DelBtnWrapper>
         {popUp.isPopUpOpen && (
-          <div className="flex-col items-center ">
-            <NameWrapper>{whaleIndex[popUp.id - 1].whaleName}</NameWrapper>
+          <div className="w-full h-full flex flex-col items-center justify-center relative">
             <ImgWrapper
               src={whaleIndex[popUp.id - 1].whaleImg}
               alt={whaleIndex[popUp.id - 1].whaleName}
             />
+            <NameWrapper className="w-full text-center absolute top-[240px]">
+              {whaleIndex[popUp.id - 1].whaleName}
+            </NameWrapper>
+            <WhaleUl className="">
+              {whaleDescription[popUp.id - 1].whaleDesLow.map((val) => (
+                <li className="mb-[2rem]">{val}</li>
+              ))}
+            </WhaleUl>
           </div>
         )}
       </PopUpWrapper>
@@ -39,42 +41,51 @@ const WhalePopup = () => {
 
 export default WhalePopup;
 
+const WhaleUl = styled.ul`
+  color: black;
+  width: 100%;
+  height: 300px;
+  padding: 0 3rem;
+  line-height: 1.9rem;
+  list-style-type: disc;
+  font-family: "Poor Story", cursive;
+  font-size: 1.4rem;
+`;
 const NameWrapper = styled.div`
-  font-size: 2rem;
+  color: white;
+  font-size: 2.5rem;
   text-align: center;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
 `;
 const ImgWrapper = styled.img`
-  border: solid rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
-  width: 500px;
-  height: auto;
-  margin-top: 2rem;
+  width: auto;
+  height: 250px;
 `;
-const DivWrapper = styled.div`
+export const DivWrapper = styled.div`
   z-index: -1;
   ${(props) => modalSettings(props.visible)}
 `;
-const PopUpWrapper = styled.div`
-  background-color: white;
-  border-radius: 5px;
+export const PopUpWrapper = styled.div`
+  background-color: #ffe27e;
+  border-radius: 8px;
+  border: solid white 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
   position: relative;
-  padding: 1rem;
-  padding-bottom: 5rem;
+  padding: 0 1rem;
   z-index: 99;
   ${(props) => modalSettings(props.visible)}
 `;
 
-const modalSettings = (visible) => css`
+export const modalSettings = (visible) => css`
   visibility: ${visible ? "visible" : "hidden"};
   animation: ${visible ? fadeIn : fadeOut} 0.3s ease-out;
   transition: visibility 0.3s ease-out;
   z-index: 15;
 `;
-const PopUpBackground = styled.div`
+export const PopUpBackground = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -85,23 +96,7 @@ const PopUpBackground = styled.div`
   ${(props) => modalSettings(props.visible)}
 `;
 
-const DelBtnWrapper = styled.div`
-  text-align: right;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  width: 100%;
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-`;
-
-const DelBtn = styled.span`
-  display: inline-block;
-  cursor: pointer;
-`;
-
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   0% {
     opacity: 0;
   }
@@ -109,7 +104,7 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
-const fadeOut = keyframes`
+export const fadeOut = keyframes`
   0% {
     opacity:1;
   }

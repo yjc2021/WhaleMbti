@@ -1,12 +1,10 @@
 import React from "react";
 import FooterLogo from "../footerLogo";
-import Share from "./share";
 const Footer = (props) => {
   return (
     <>
-      <footer className="z-50 lg:flex flex-col items-center justify-evenly w-full py-3 ">
+      <footer className="w-[100vw] h-[60px] md:h-[80px]  bg-[rgba(177,220,250,0.2)]">
         <FooterLogo />
-        <Share />
       </footer>
     </>
   );

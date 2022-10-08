@@ -1,17 +1,22 @@
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import styled from "styled-components";
 import Router from "./routes/Router";
 
 function App() {
   return (
     <RecoilRoot>
-      <div className="bg-gray-300 h-screen ">
+      <DivWrapper className="h-full w-full ">
         <BrowserRouter>
           <Router />
         </BrowserRouter>
-      </div>
+      </DivWrapper>
     </RecoilRoot>
   );
 }
 
 export default App;
+
+const DivWrapper = styled.div`
+  font-family: "Do Hyeon", sans-serif;
+`;

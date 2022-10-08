@@ -17,3 +17,8 @@ export const popUpAtom = atom({
   key: "popUpAtom",
   default: { isPopUpOpen: false, id: undefined },
 });
+
+export const historyPopUpAtom = atom({
+  key: "historyPopUpAtom",
+  default: { isPopUpOpen: false, id: undefined },
+});

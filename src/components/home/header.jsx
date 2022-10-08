@@ -5,10 +5,10 @@ import "./header.css";
 import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import Share from "./share";
-import Logo from "../logo";
+import logo from "../../img/logo/logo.png";
 import { useRecoilState } from "recoil";
 import { loginAtom } from "../../atoms";
-const Header = (props) => {
+const Header = ({ isSticky = true }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const toggleSideBar = () => setIsOpen(!isOpen);
@@ -19,6 +19,9 @@ const Header = (props) => {
     setIsLogin(false);
     if (localStorage.getItem("auth-token"))
       localStorage.removeItem("auth-token");
+    if (localStorage.getItem("refresh-token"))
+      localStorage.removeItem("refresh-token");
+    if (localStorage.getItem("account")) localStorage.removeItem("account");
     // TODO: localStorage에서 refresh token 제거
     alert("로그아웃 되었습니다.");
     // home으로 navigate ?
@@ -47,144 +50,121 @@ const Header = (props) => {
     // TODO: auth-token 유효성 검사
     // 유효하면 로그인 상태 표시 (isLoginAtom = true), 유효하지 않으면 로그아웃 상태 표시 (isLoginAtom = false)
   });
+
+  const buttonStyle =
+    "hover:bg-[#FFE27E] shadow-inner shadow-[rgba(0,0,0,0.5)] mb-3 w-[210px] h-[50px] bg-white flex items-center justify-center text-black rounded-full cursor-pointer mx-2";
   return (
-    <header className="sticky z-50 top-0 w-full h-16  m-0 px-10 py-2">
-      <nav className="flex items-center justify-center lg:justify-between">
+    <NavHeader
+      isSticky={isSticky}
+      className="sticky z-50 top-0 w-full h-[60px] md:h-[80px] m-0 px-[20px] md:px-[90px] leading-[60px] md:leading-[80px] bg-[rgba(177,220,250,0.2)]"
+    >
+      <nav className="flex items-center justify-between">
         <div
+          className="text-white text-[30px] md:text-[40px]"
           onClick={() => navigate("/")}
-          className="h-10 w-40 border cursor-pointer"
+          style={{ cursor: "pointer" }}
         >
-          LOGO
+          <FontAwesomeIcon icon={solid("house")} />
+        </div>
+        <div onClick={() => navigate("/")} className="w-32 cursor-pointer">
+          <img src={logo} alt="logo" />
         </div>
         <SideBarWrapper
           isOpen={isOpen}
           ref={sideBarRef}
-          className="z-50 rounded-md flex flex-col fixed top-0 bottom-0 right-0 right-[-250px] px-2 w-[250px]  overflow-y-auto transition-all linear py-4"
+          className="z-50 rounded-md flex flex-col fixed top-0 bottom-0 right-0 right-[-290px] px-2 w-[290px] overflow-y-auto transition-all linear py-4"
         >
           <header className="flex flex-col items-center justify-center">
-            {/*
-            <button
-              onClick={toggleSideBar}
-              className="rounded w-10 h-8 bg-blue-200 text-white"
-            >
-              닫기
-            </button>
-            */}
-            <Logo sideBar={true} />
             {!isLogin && (
               <>
                 <div
-                  className="w-16 h-16 mt-16 rounded-full bg-gray-400 text-white flex justify-center items-center cursor-pointer"
+                  className="mt-[20px] flex flex-col items-center cursor-pointer text-white hover:text-[#FFE27E]"
                   onClick={() => navigate("/login")}
                 >
                   <FontAwesomeIcon
-                    icon={solid("user")}
-                    className="w-1/2 h-1/2"
+                    icon={solid("circle-user")}
+                    className="w-[80px] h-auto "
                   />
-                </div>
-                <div
-                  className="border-b-2 border-b-gray-300 text-sm text-center text-gray-400 cursor-pointer"
-                  onClick={() => navigate("/login")}
-                >
-                  로그인이 필요합니다
+                  <UnderBarDiv className="text-[1.2rem] underline underline-offset-2">
+                    로그인이 필요합니다
+                  </UnderBarDiv>
                 </div>
               </>
             )}
             {isLogin && (
               <>
-                <div
-                  className="w-16 h-16 mt-16 rounded-full bg-gray-400 text-white flex justify-center items-center cursor-pointer"
-                  onClick={() => navigate("/login")}
-                >
+                <div className="mt-[20px] flex flex-col items-center text-white hover:text-[#FFE27E]">
                   <FontAwesomeIcon
-                    icon={solid("user")}
-                    className="w-1/2 h-1/2"
+                    icon={solid("circle-user")}
+                    className="w-[80px] h-auto "
                   />
-                </div>
-                <div
-                  className="border-b-2 border-b-gray-300 text-sm text-center text-gray-400 cursor-pointer"
-                  onClick={logOut}
-                >
-                  로그아웃
+                  <UnderBarDiv
+                    className="text-[1.2rem] underline underline-offset-2 cursor-pointer"
+                    onClick={() => setIsLogin(false)}
+                  >
+                    로그아웃
+                  </UnderBarDiv>
                 </div>
               </>
             )}
           </header>
-          <div className=" my-5 w-full h-50 flex flex-col items-center">
+          <div className="my-[3rem] w-full h-50 flex flex-col items-center gap-[1.5rem] text-[1.2rem]">
             <button
-              className="mb-3 w-40 h-10 bg-blue-200 text-white rounded-full cursor-pointer mx-2"
+              className={buttonStyle}
               onClick={() => {
-                !isLogin ? alert("로그인이 필요한 기능입니다") : navigate("/");
+                navigate("/user/history");
               }}
             >
               테스트 기록 보기
             </button>
 
             <button
-              className="mb-3 w-40 h-10 bg-blue-200 text-white rounded-full cursor-pointer mx-2"
-              onClick={() => navigate("/")}
+              className={buttonStyle}
+              onClick={() => alert("준비중인 기능입니다.")}
             >
-              설정
+              회원정보 수정
             </button>
-            <button
-              className="mb-3 w-40 h-10 bg-blue-200 text-white rounded-full cursor-pointer mx-2"
-              onClick={() => navigate("/join")}
-            >
-              회원가입
-            </button>
-            <button
-              className="w-40 h-10 bg-blue-200 text-white rounded-full cursor-pointer mx-2"
-              onClick={() => navigate("/whales")}
-            >
+            {!isLogin && (
+              <button className={buttonStyle} onClick={() => navigate("/join")}>
+                회원가입
+              </button>
+            )}
+            <button className={buttonStyle} onClick={() => navigate("/whales")}>
               고래 도감
             </button>
+            {/*<Share /> */}
           </div>
-          <Share color={"gray"} />
         </SideBarWrapper>
-        {/*
-        <div className="hidden lg:flex justify-center w-1/2 ">
-          <span className="mx-2 cursor-pointer" onClick={() => navigate("/")}>
-            테스트 기록 보기
-          </span>
-          <span className="mx-2 cursor-pointer" onClick={() => navigate("/")}>
-            공지사항
-          </span>
-          <span className="mx-2 cursor-pointer" onClick={() => navigate("/")}>
-            설정
-          </span>
-        </div>
-        <span className="hidden lg:block">1,234,567</span>
-          */}
-        {!isOpen && (
-          <button
-            onClick={toggleSideBar}
-            className="absolute right-5 lg:hidden rounded-full w-10 h-10 bg-blue-200"
-          >
-            <FontAwesomeIcon className="text-white" icon={solid("user")} />
-          </button>
-        )}
+
         <div
-          className="hidden lg:flex flex-col items-center cursor-pointer"
+          className="flex flex-col items-center cursor-pointer"
           onClick={toggleSideBar}
         >
-          <FontAwesomeIcon icon={solid("bars")} className="text-2xl" />
-          {/*<button className="rounded-full w-10 h-10 bg-blue-200">
-            <FontAwesomeIcon className="text-white" icon={solid("user")} />
-          </button>
-        <span className="inline-block text-xs">로그인</span> */}
+          <FontAwesomeIcon
+            icon={solid("bars")}
+            className="text-[30px] md:text-[40px]"
+          />
         </div>
       </nav>
-    </header>
+    </NavHeader>
   );
 };
 
 export default Header;
-
+const UnderBarDiv = styled.div``;
 const SideBarWrapper = styled.div`
-  background-color: rgba(106, 231, 255, 0.8);
+  background-color: rgba(1, 1, 1, 0.4);
   ${(props) =>
     props.isOpen &&
     css`
       right: 0;
+    `}
+`;
+
+const NavHeader = styled.header`
+  ${(props) =>
+    !props.isSticky &&
+    css`
+      position: fixed;
     `}
 `;

@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 const RetryBtn = (props) => {
   const navigate = useNavigate();
   return (
-    <div className="my-2 w-full h-20 flex items-center justify-center">
+    <div className="mb-[60px] w-full h-20 flex items-center justify-center">
       <button
         onClick={() => navigate("/test/home")}
-        className="rounded-full w-60 h-14 bg-gray-200 text-black text-xl "
+        className="rounded-full w-60 h-14 bg-[#ffe27e] text-[#002fac] text-[1.4rem] "
       >
-        테스트 다시 하기
+        <span>테스트 다시 하기 </span>
         <FontAwesomeIcon icon={solid("arrow-rotate-left")} />
       </button>
     </div>

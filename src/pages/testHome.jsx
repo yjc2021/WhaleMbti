@@ -7,34 +7,33 @@ import StartBtn from "../components/story/startBtn";
 import { introData } from "../data";
 import { useSetRecoilState } from "recoil";
 import { counterAtom } from "../atoms";
+import { Background } from "./testStory";
 
 const TestHome = () => {
   const setCounter = useSetRecoilState(counterAtom);
   const introId = useRef(0);
   const [id, setId] = useState(0);
   const addId = () => {
-    console.log(introId.current, id);
-
     if (introId.current < 2) {
       setId((cur) => cur + 1);
       introId.current += 1;
-      setTimeout(addId, 2000);
+      setTimeout(addId, 1500);
     }
   };
   useEffect(() => {
-    setTimeout(() => addId(), 2000);
+    setTimeout(() => addId(), 1500);
   }, []);
   useEffect(() => {
     setCounter(1);
   });
   return (
-    <div className="text-white h-full ">
+    <Background className="text-white h-full w-full relative bg-cover overflow-y-auto lg:overflow-hidden">
       <Header />
-      <div className="font-semibold px-5 pt-5 bg-black h-full">
+      <div className="h-full flex-col justify-between px-5 pt-5 font-[100]">
         <IntroBlock id={id} story={introData[id]} />
         <StartBtn />
       </div>
-    </div>
+    </Background>
   );
 };
 

@@ -1,23 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 const StartBtn = (props) => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-center text-black ">
-      <ButtonWrapper
+    <div className="mt-[150px] w-full flex items-center justify-center">
+      <button
         onClick={() => navigate("/test/story/1")}
-        className="w-1/3 h-16 bg-gray-200 rounded-full"
+        className="w-[373.54px] h-[80px] bg-white rounded-full text-black hover:bg-[#FFE27E] shadow-inner shadow-[rgba(0,0,0,0.5)]"
       >
         시작하기
-      </ButtonWrapper>
+      </button>
     </div>
   );
 };
 
 export default StartBtn;
-
-const ButtonWrapper = styled.button`
-  width: 100%;
-`;
